@@ -8,15 +8,16 @@ import './ingredients.scss';
 // on map sur nos ingredients
 // pour chacun d'entre eux, on retourne un Ingrédient (notre sous composant)
 // auquel on transmet les bonnes props
+// Ici, on n'a pas besoin de prendre la responsabilité de verifier
+// et de transmettre une à une les props de Ingredient, on ne fait que les transmettre
+// au sous composant qui aura la charge de les valider et les utiliser
 const Ingredients = ({ ingredients }) => (
   <ul className="ingredients">
     {
       ingredients.map((ingredient) => (
         <Ingredient
           key={ingredient.id}
-          quantity={ingredient.quantity}
-          unit={ingredient.unit}
-          name={ingredient.name}
+          {...ingredient}
         />
       ))
     }
@@ -34,9 +35,6 @@ Ingredients.propTypes = {
   ingredients: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      quantity: PropTypes.number.isRequired,
-      unit: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
 
