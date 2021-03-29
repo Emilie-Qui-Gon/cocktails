@@ -34,10 +34,10 @@ console.log(recipeData);
 const App = () => (
   <div className="app">
     <Header
-      author="John deuf"
-      title="Crêpes raffinées"
-      thumbnail="https://images.pexels.com/photos/53483/strawberries-crepe-dessert-sweet-53483.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-      difficulty="difficile"
+      author={recipeData.author}
+      title={recipeData.title}
+      thumbnail={recipeData.thumbnail}
+      difficulty={recipeData.difficulty}
     />
     <Ingredients />
     <Steps />
