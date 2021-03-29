@@ -1,7 +1,10 @@
 // Ici, on définira notre composant Header
 
-// Importe React
+// On Importe React
 import React from 'react';
+
+// On importe notre feuille de style
+import './header.scss';
 
 // on définit notre composant
 // Un composant est une fonction qui renvoit du JSX

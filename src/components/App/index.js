@@ -2,7 +2,7 @@
 import React from 'react';
 
 // == Imports locaux
-import './styles.css';
+import './app.scss';
 // on importe le/les composant(s) nécessaire(s)
 import Header from '../Header';
 // Pour les imports, on peut utiliser un chemin relatif depuis 

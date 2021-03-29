@@ -1,0 +1,47 @@
+.header{
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2rem;
+  // on définit notre header en relative pour pouvoir
+  // positionner le contenu textuel (header__content) par rapport à lui
+  position: relative;
+
+  // on peut faire des commentaires sur une ligne en scss !
+  // ce sélecteur (".header__image" imbriqué dans un sélecteur ".header")
+  // va générer en css un selecteur ".header .header__image"
+  .header__image{
+    // display: block;
+    max-width: 100%;
+    height:auto;
+    border-radius: 0 0 1rem 1rem;
+  }
+
+  // on utilise l'esperluette (ou et commercial) pour récupérer le
+  // nom du selecteur parent pour construire le sélecteur courant
+  &__content{
+    // ici, on indique que header__content se positionne à 2 rem du bas 
+    // de l'élément header (plus proche ancêtre positionné)
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    right:0;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+  }
+
+  &__title{
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 2.5rem;
+    font-style: italic;
+    margin-bottom:0.5rem;
+  }
+
+  &__infos{
+    letter-spacing: .05rem;
+  }
+
+}
+
+
+
