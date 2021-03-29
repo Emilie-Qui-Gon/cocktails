@@ -5,6 +5,8 @@ import React from 'react';
 import './app.scss';
 // on importe le/les composant(s) nécessaire(s)
 import Header from '../Header';
+import Steps from '../Steps';
+
 // Pour les imports, on peut utiliser un chemin relatif depuis 
 // le fichier courant comme ci-dessus
 // ou un chemin depuis la racine du projet comme ci-dessous
@@ -22,9 +24,7 @@ const App = () => (
     <div>
       Composant Ingredients
     </div>
-    <div>
-      Composant Steps
-    </div>
+    <Steps />
   </div>
 );
 
