@@ -6,8 +6,15 @@ import './app.scss';
 // on importe le/les composant(s) nécessaire(s)
 import Header from '../Header';
 import Steps from '../Steps';
+import Ingredients from '../Ingredients';
 
-// Pour les imports, on peut utiliser un chemin relatif depuis 
+// ici, on peut choisir le nom de la variable pour récupérer
+
+import recipeData from '../../data/recipe';
+
+console.log(recipeData);
+
+// Pour les imports, on peut utiliser un chemin relatif depuis
 // le fichier courant comme ci-dessus
 // ou un chemin depuis la racine du projet comme ci-dessous
 // import Header from 'src/components/Header';
@@ -18,12 +25,21 @@ import Steps from '../Steps';
 //
 // Une fois les composant importés, on peut les utiliser
 // pour produire notre UI
+
+// Pour rendre notre composant header configurable
+// il doit être en mesure de recevoir 4 arguments :
+// title, author, thumb, difficulty
+// on passe les informations à notre header par l'indermédiaires des 
+// propriétés de Header
 const App = () => (
   <div className="app">
-    <Header />
-    <div>
-      Composant Ingredients
-    </div>
+    <Header
+      author="John deuf"
+      title="Crêpes raffinées"
+      thumbnail="https://images.pexels.com/photos/53483/strawberries-crepe-dessert-sweet-53483.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+      difficulty="difficile"
+    />
+    <Ingredients />
     <Steps />
   </div>
 );
