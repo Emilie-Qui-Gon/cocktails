@@ -2,14 +2,25 @@
 import React from 'react';
 
 // == Import
-import reactLogo from './react-logo.svg';
 import './styles.css';
 
 // == Composant
+// on peut noter que pour définir la classe d'un élément,
+// on doit utiliser l'attribut className
 const App = () => (
   <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <h1>Composant : App</h1>
+    <header>
+      <h1>Crêpes raffinées</h1>
+    </header>
+    <ul>
+      <li>Ingédient 1</li>
+      <li>Ingédient 2</li>
+    </ul>
+    <ul>
+      <li>Etape 1</li>
+      <li>Etape 2</li>
+      <li>Etape 3</li>
+    </ul>
   </div>
 );
 
