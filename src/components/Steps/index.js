@@ -3,30 +3,38 @@ import PropTypes from 'prop-types';
 
 import './steps.scss';
 
-const Steps = ({steps}) => {
-  console.log(steps);
+const Steps = ({ steps }) => {
+  // on récupère dans steps un tableau de chaines de caractères (cf PropTypes)
+  // grâce à la fonction map,
+  // on va transformer ce tableau de chaines de caractères en un tableau de JSX
+  // on injectera le tableau obtenu dans le JSX retourné par notre composant
 
-  // on peut injecter un tableau dans le jsx
-  const numbers = [1, 2, 3];
+  // A noter :
+  // On doit ajouter aux éléments produits par une boucle un attribut 
+  // key qui a deux caractéristiques :
+  // - être unique,
+  // - être stable dans le temps
+  // Si on a à disposition un identifiant, parfait, sinon, le contenu lui même
+  // peut faire office de clé.
+  // Dans tous les cas, il est fortement déconseillé d'utiliser l'index
+  const stepsLi = steps.map(
+    (step) => <li key={step} className="steps__item">{step}</li>,
+  );
 
-  // on peut injecter du JSX dans du JSX 
-  const h1 = <h1>test</h1>;
+  /*
+  équivalent à :
+  function transformStringToJSXLi(stringValue) {
+    const JSXLiValue = <li className="steps__item">{stringValue}</li>;
+    return JSXLiValue;
+  }
 
-  // on peut injecter un tableau de JSX dans du JSX
-  const ps = [
-    <p>P 1</p>,
-    <p>P 2</p>,
-    <p>P 3</p>,
-  ];
+  const stepsLi = steps.map(transformStringToJSXLi);
+  */
 
   // on peut du coup injecter notre props steps dans le JSX, c'est un tableau de string
-
   return (
     <ol className="steps">
-      <li className="steps__item">Etape {numbers}</li>
-      <li className="steps__item">Etape {h1}</li>
-      <li className="steps__item">Etape {ps}</li>
-      <li className="steps__item">Etape {steps}</li>
+      {stepsLi}
     </ol>
   );
 };
