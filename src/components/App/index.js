@@ -39,7 +39,7 @@ const App = () => (
       thumbnail={recipeData.thumbnail}
       difficulty={recipeData.difficulty}
     />
-    <Ingredients />
+    <Ingredients ingredients={recipeData.ingredients} />
     <Steps steps={recipeData.instructions} />
   </div>
 );
