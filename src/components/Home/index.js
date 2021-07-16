@@ -1,10 +1,7 @@
 // == Import npm
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { Route, Switch, Redirect } from 'react-router-dom';
-
-import { BrowserRouter as Router } from 'react-router-dom';
-// import store from 'src/store';
+import { Route, Switch, useLocation} from 'react-router-dom';
 
 import Presentation from 'src/components/Presentation';
 import App from 'src/components/App';
@@ -22,11 +19,21 @@ import recipeData from '../../data/recipe';
 
 const Home = () => {
 
+
+  const location = useLocation();
+
+  useEffect(
+    () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    },
+    [location],
+  );
+
     return (
 
         <div className="home">
 
-            <Router>
+            
                 <Switch>
 
                     <Route path="/" exact>
@@ -42,8 +49,7 @@ const Home = () => {
 
 
                 </Switch>
-            </Router>
-
+       
 
         </div>
     )
