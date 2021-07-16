@@ -1,48 +1,91 @@
 // == Import npm
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 // == Imports locaux
 import './app.scss';
-// on importe le/les composant(s) nécessaire(s)
-import Header from '../Header';
-import Steps from '../Steps';
-import Ingredients from '../Ingredients';
 
-// ici, on peut choisir le nom de la variable pour récupérer
 
-import recipeData from '../../data/recipe';
 
-console.log(recipeData);
 
-// Pour les imports, on peut utiliser un chemin relatif depuis
-// le fichier courant comme ci-dessus
-// ou un chemin depuis la racine du projet comme ci-dessous
-// import Header from 'src/components/Header';
 
-// == Composant
-// on peut noter que pour définir la classe d'un élément,
-// on doit utiliser l'attribut className
-//
-// Une fois les composant importés, on peut les utiliser
-// pour produire notre UI
 
-// Pour rendre notre composant header configurable
-// il doit être en mesure de recevoir 4 arguments :
-// title, author, thumb, difficulty
-// on passe les informations à notre header par l'indermédiaires des 
-// propriétés de Header
-const App = () => (
-  <div className="app">
-    <Header
-      author={recipeData.author}
-      title={recipeData.title}
-      thumbnail={recipeData.thumbnail}
-      difficulty={recipeData.difficulty}
-    />
-    <Ingredients ingredients={recipeData.ingredients} />
-    <Steps steps={recipeData.instructions} />
-  </div>
-);
+const App = ({ recipes }) => {
+  console.log(recipes);
+
+  const { slug } = useParams();
+  const matchedRecipe = recipes.find((recipe) => recipe.slug === slug);
+  console.log(matchedRecipe);
+
+
+  return (
+    <div className="presentation">
+      <div className="header">
+        <div className="site-name">
+          <NavLink className="nav"
+            to="/"
+            exact>
+            <h1>Coocktails Art</h1>
+          </NavLink>
+        </div>
+        <div className="menu">
+          <NavLink className="nav"
+            to="/"
+            exact>
+            Mon travail
+          </NavLink>
+          <NavLink className="nav"
+            to="/contact"
+            exact>
+            Contact
+          </NavLink>
+        </div>
+      </div>
+
+      <div key={matchedRecipe.id} className="recette">
+
+        <header className="recette-header">
+          <img
+            src={matchedRecipe.thumbnail}
+            alt={matchedRecipe.title}
+            className="recette-header__image"
+          />
+
+          <div className="recette-header__content">
+            <h1 className="recette-header__title">{matchedRecipe.title}</h1>
+            <h2 className="recette-header__infos"> - {matchedRecipe.difficulty} -</h2>
+          </div>
+        </header>
+      </div>
+
+      <ul className="ingredients">
+        {matchedRecipe.ingredients.map((ingredient) => (
+          <li className="ingredient" key={ingredient.id}>
+            <span className="ingredient-quantity">
+              {ingredient.quantity} {ingredient.unit}
+            </span> {ingredient.name}
+          </li>
+        ))}
+      </ul>
+
+      <ol className="steps">
+        {matchedRecipe.instructions.map((instruction) => (
+
+          <li key={instruction} className="step">
+            {instruction}
+          </li>
+
+        ))}
+      </ol>
+
+      <div className="footer">
+        <p className="text-footer insta">@coocktails-art</p>
+        <p className="text-footer copy">All rights reserved</p>
+      </div>
+    </div>
+
+  )
+};
 
 // == Export
 export default App;
